@@ -14,4 +14,12 @@ class CreaturesController < ApplicationController
 		Creature.create(creature)
 		redirect_to "/creatures"
 	end
+
+	def update
+		creature_id = params[:id}
+			creature = Creature.find(creature_id)
+			updates_attributes = params.require(:creature).permit(:name, :kind, :description)
+			Creature.update(creature, updates_attributes)
+			redirect_to"/bogs/#{creature_id}"
+		end
 end
